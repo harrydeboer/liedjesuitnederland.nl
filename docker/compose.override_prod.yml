@@ -1,0 +1,26 @@
+services:
+  web:
+    build:
+      args:
+        APP_ENV: prod
+    volumes:
+      - .:/var/www/html
+    restart: always
+    networks:
+      liedjesuitnederland:
+        ipv4_address: 172.20.0.6
+
+  database:
+    ports:
+      - 127.0.0.1:3306:3306
+    restart: always
+    networks:
+      liedjesuitnederland:
+        ipv4_address: 172.20.0.7
+
+networks:
+  liedjesuitnederland:
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.20.0.0/24
