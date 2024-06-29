@@ -25,7 +25,7 @@ RUN curl -L -o /tmp/imagick.tar.gz https://github.com/Imagick/imagick/archive/re
     && make \
     && make install \
     && echo "extension=imagick.so" > /usr/local/etc/php/conf.d/ext-imagick.ini \
-    && rm -rf /tmp/*
+    && rm -rf /tmp/* \
 
 ENV APACHE_DOCUMENT_ROOT /var/www/html/public
 
@@ -42,7 +42,7 @@ RUN if [ "$APP_ENV" = "dev" ] ; then pecl install xdebug && docker-php-ext-enabl
 
 COPY --from=composer:2.7.6 /usr/bin/composer /usr/bin/composer
 
-COPY . /var/www/html
+COPY ./docker /var/www/html/docker
 COPY ./docker/web/apache2.conf /etc/apache2/apache2.conf
 COPY ./docker/web/000-default.${APP_ENV}.conf /etc/apache2/sites-available/000-default.conf
 COPY ./docker/web/php.ini /usr/local/etc/php/conf.d/php.ini
