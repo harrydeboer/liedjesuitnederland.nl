@@ -8,7 +8,6 @@
 !/wp-content/themes/webtailor
 /wp-includes
 /.env.local
-/.htaccess
 /compose.override.yml
 /index.php
 /license.txt
