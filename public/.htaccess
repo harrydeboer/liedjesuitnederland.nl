@@ -31,14 +31,6 @@ AddType application/x-font-ttf .ttf
     </FilesMatch>
 </IfModule>
 
-<Files wp-config.php>
-Require all denied
-</Files>
-
-<Files .env.local>
-Require all denied
-</Files>
-
 # BEGIN WordPress
 # De richtlijnen (regels) tussen "BEGIN WordPress" en "END WordPress" worden
 # dynamisch gegenereerd en zouden alleen aangepast mogen worden via WordPress filters.
