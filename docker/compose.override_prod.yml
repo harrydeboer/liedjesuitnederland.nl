@@ -4,8 +4,8 @@ services:
       args:
         APP_ENV: prod
     volumes:
-      - /var/www/log/apache2:/var/log/apache2
-      - .:/var/www/html
+      - ./log:/var/log/apache2
+      - .:/var/www/html/public
     restart: always
     networks:
       liedjesuitnederland:
