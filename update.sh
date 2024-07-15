@@ -19,5 +19,6 @@ then
 else
   $PREFIX git pull origin master
   docker cp /var/www/liedjesuitnederland.nl/.env.local liedjesuitnederland:/var/www/html/.env.local
+  docker cp /var/www/liedjesuitnederland.nl/wp-config.php liedjesuitnederland:/var/www/html/wp-config.php
 fi
 docker system prune -f
