@@ -4,6 +4,7 @@ ARG APP_ENV
 
 RUN apt-get update
 RUN DEBIAN_FRONTEND=noninteractive apt-get -y install \
+    git \
     nano \
     libxml2-dev \
     libcurl4-openssl-dev \
