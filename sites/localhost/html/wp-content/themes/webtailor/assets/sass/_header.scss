@@ -1,0 +1,304 @@
+#main {
+  margin-top: 90px;
+}
+#header {
+  background-color: #fff;
+  min-height: 90px;
+  width: 100%;
+  padding: 0;
+  box-shadow: $shadow;
+  position: fixed;
+
+  .row {
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logo-wrap {
+    padding: 20px 0;
+
+    a {
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      color: $orange;
+      transition: all 0.1s ease;
+
+      h4 {
+        font-size: 28px;
+        line-height: 24px;
+        max-width: 130px;
+        transition: all 0.1s ease;
+        margin-bottom: 0;
+        margin-left: 20px;
+
+        span {
+          font-size: 14px;
+        }
+
+      }
+      &:hover, &:focus {
+        color: $red;
+        h4 {
+          color: $red;
+        }
+      }
+
+    }
+  }
+
+  .header-menu.desktop {
+    width: 100%;
+  }
+  .header-menu .menu {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    align-items: center;
+
+    .menu-item {
+      position: relative;
+
+
+      a {
+        display: block;
+        text-decoration: none;
+        color: #333;
+        font-size: 18px;
+        line-height: 21px;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        padding: 0 15px;
+        font-family: $pFont;
+
+        &:hover, &:focus, &.active {
+          color: $red;
+        }
+      }
+    }
+
+    .current-menu-parent > a {
+      color: $red;
+    }
+    .sub-menu {
+      position: relative;
+      display: none;
+      background-color: #fff;
+
+      .menu-item {
+        a {
+          padding: 0 10px 10px 0;
+          border-bottom: none;
+
+        }
+        &:first-child a {
+          padding-top: 15px;
+        }
+      }
+    }
+  }
+
+  .menu-wrapper {
+    width: 38px;
+    position: relative;
+    height: 28px;
+    padding: 0;
+    transition: all .3s ease;
+    border-radius: 4px;
+    border: 1px solid transparent;
+
+    .menu-toggle {
+      height: 26px;
+      width: 36px;
+      position: relative;
+      cursor: pointer;
+
+      i, i:after, i:before {
+        display: block;
+        position: absolute;
+        height: 2px;
+        width: 36px;
+        right: 0;
+        background-color: $orange;
+        border-radius: 2px;
+        -webkit-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        transform: rotate(0deg);
+        transition: all .3s ease;
+      }
+      i {
+        top: 12px;
+      }
+      i:after, i:before {
+        content: '';
+      }
+      i:before {
+        top: -12.5px;
+      }
+      i:after {
+        top: 12.5px;
+      }
+    }
+    &.open .menu-toggle {
+      i {
+        background-color: transparent;
+      }
+      i:before {
+        -webkit-transform: rotate(45deg);
+        -moz-transform: rotate(45deg);
+        -o-transform: rotate(45deg);
+        transform: rotate(45deg);
+        top: 0;
+      }
+      i:after {
+        -webkit-transform: rotate(-45deg);
+        -moz-transform: rotate(-45deg);
+        -o-transform: rotate(-45deg);
+        transform: rotate(-45deg);
+        top: 0;
+      }
+    }
+  }
+}
+.nav-wrapper {
+  position: relative;
+
+  &.open {
+    z-index: 499;
+
+    .nav-menu-wrapper {
+      transform: translateX(0);
+    }
+    .nav-overlay {
+      opacity: 0.4;
+      display: block;
+    }
+  }
+
+  .nav-menu-wrapper {
+    right: 0;
+    position: fixed;
+    padding-top: 80px;
+    z-index: 400;
+    width: 350px;
+    height: calc(100vh - 80px);
+    transition: all .6s ease;
+    transform: translateX(350px);
+    background-color: #fff;
+    overflow: scroll;
+  }
+
+  .header-menu ul.menu {
+    width: 100%;
+  }
+
+  ul.menu li {
+    display: block;
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 26px;
+
+    a {
+      display: block;
+      position: relative;
+      z-index: 2;
+      padding: 10px 0 10px 30px;
+      border-bottom: 1px solid #f4f4f4;
+      text-decoration: none;
+      color: #333;
+      font-weight: 400;
+      font-size: 16px;
+      background-color: #fff;
+      transition: all 0.2s ease;
+
+      &:hover, &:focus {
+        background-color: #fafafa;
+      }
+    }
+    .submenu-icon {
+      display: block;
+      color: #333;
+      font-size: 18px;
+      line-height: 26px;
+      position: absolute;
+      z-index: 2;
+      right: 0;
+      top: 0;
+      padding: 10px 20px;
+      background-color: #fff;
+      border-bottom: 1px solid #f4f4f4;
+      transition: all 0.2s ease;
+
+      &:hover, &:focus {
+        background-color: #fafafa;
+      }
+
+
+      svg {
+        transform: rotate(0deg);
+        transition: all 0.4s ease;
+        display: inline-block;
+        font-size: inherit;
+        height: 1em;
+        overflow: visible;
+        vertical-align: -.125em;
+      }
+    }
+    ul.sub-menu {
+      height: 0;
+      padding: 0;
+      display: none;
+      opacity: 0;
+      transition: all 0.3s ease;
+
+      a {
+        padding-left: 45px;
+        font-weight: 300;
+        font-size: 14px;
+        color: #333;
+        transition: all 0.3s ease;
+
+        &:before {
+          content: "-";
+          position: absolute;
+          top: 10px;
+          left: 30px;
+          font-size: 18px;
+          z-index: 3;
+          color: #333;
+          transition: all 0.3s ease;
+        }
+      }
+    }
+    &.submenu-open {
+
+      ul.sub-menu {
+        height: initial;
+        opacity: 1;
+        display: block;
+      }
+      .submenu-icon svg {
+        transform: rotate(180deg);
+      }
+    }
+  }
+  .nav-overlay {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    display: none;
+    overflow: hidden;
+    opacity: 0;
+    background: #000;
+    transition: all 0.6s ease;
+  }
+
+}

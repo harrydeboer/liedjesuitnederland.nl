@@ -1,0 +1,7 @@
+/.idea
+/node_modules
+data
+/.env.local
+/compose.override.yml
+latest.yml
+lsws-dockerfiles
