@@ -193,3 +193,11 @@ function redirect_video(): void {
         exit;
     }
 }
+
+function my_global_curl_set_opt( CurlHandle $curl): CurlHandle {
+    curl_setopt( $curl, CURLOPT_CONNECTTIMEOUT, 60 );
+    curl_setopt( $curl, CURLOPT_TIMEOUT, 60 );
+
+    return $curl;
+}
+add_action( 'http_api_curl', 'my_global_curl_set_opt', 1, 3 );
