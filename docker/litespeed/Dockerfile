@@ -1,4 +1,4 @@
-FROM litespeedtech/litespeed:6.2.2-lsphp82
+FROM litespeedtech/litespeed:6.2.2-lsphp83
 
 RUN apt-get update
 RUN DEBIAN_FRONTEND=noninteractive apt-get -y install \
