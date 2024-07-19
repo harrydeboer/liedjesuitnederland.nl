@@ -12,3 +12,4 @@ rm -r sites/lscache
 mkdir sites/lscache
 docker compose restart litespeed
 docker system prune -f
+docker exec -it liedjesuitnederland-redis redis-cli
