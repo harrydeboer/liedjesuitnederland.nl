@@ -12,7 +12,7 @@ services:
       - redis-server --requirepass "$${REDIS_PASSWORD:?REDIS_PASSWORD variable is not set}"
     restart: always
     volumes:
-      - ./dаta:/root/redis
+      - redisdata:/data
     env_file: .env.local
   mysql:
     image: mysql:8.0.37
@@ -26,6 +26,7 @@ services:
 volumes:
   mysqldata:
     driver: local
+  redisdata:
 
 networks:
   liedjesuitnederland:
