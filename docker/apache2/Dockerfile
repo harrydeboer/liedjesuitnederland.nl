@@ -6,10 +6,13 @@ RUN apt-get update
 RUN DEBIAN_FRONTEND=noninteractive apt-get -y install \
     git \
     nano \
+    libgmp-dev \
     libxml2-dev \
     libcurl4-openssl-dev \
     libonig-dev \
     libzip-dev \
+    libenchant-2-dev \
+    libxslt1-dev \
     zip \
     unzip \
     libmagickwand-dev \
@@ -35,13 +38,14 @@ RUN sed -ri -e 's!/var/www/!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/apache2.conf
 
 RUN a2enmod headers rewrite ssl expires
 
-RUN docker-php-ext-install bcmath calendar curl ftp mbstring xml intl zip pdo_mysql opcache mysqli shmop exif gd
+RUN docker-php-ext-install bcmath bz2 calendar curl enchant exif ftp gd gettext gmp intl mbstring mysqli opcache pcntl pdo_mysql soap sockets sysvmsg sysvsem sysvshm xml xsl zip
 
+RUN pecl install redis && docker-php-ext-enable redis
 RUN pecl install igbinary && docker-php-ext-enable igbinary
 
 RUN if [ "$APP_ENV" = "dev" ] ; then pecl install xdebug && docker-php-ext-enable xdebug; fi
 
-COPY --from=composer:2.7.6 /usr/bin/composer /usr/bin/composer
+COPY --from=composer:2.7.7 /usr/bin/composer /usr/bin/composer
 
 COPY ./docker /var/www/html/docker
 COPY ./docker/apache2/apache2.conf /etc/apache2/apache2.conf

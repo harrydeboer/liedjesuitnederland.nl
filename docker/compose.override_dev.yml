@@ -22,6 +22,9 @@ services:
       - PHP_IDE_CONFIG=serverName=liedjesuitnederland
     volumes:
       - ./sites/liedjesuitnederland.nl:/var/www/html/sites/liedjesuitnederland.nl
+  redis:
+    ports:
+      - 6379:6379
   mysql:
     ports:
       - 3306:3306
