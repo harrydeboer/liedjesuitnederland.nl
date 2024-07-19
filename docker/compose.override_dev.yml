@@ -21,7 +21,7 @@ services:
       - XDEBUG_CONFIG=client_host=host.docker.internal
       - PHP_IDE_CONFIG=serverName=liedjesuitnederland
     volumes:
-      - ./sites/localhost:/var/www/html/sites/localhost
+      - ./sites/liedjesuitnederland.nl:/var/www/html/sites/liedjesuitnederland.nl
   mysql:
     ports:
       - 3306:3306
