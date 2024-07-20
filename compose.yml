@@ -27,6 +27,7 @@ volumes:
   mysqldata:
     driver: local
   redisdata:
+    driver: local
 
 networks:
   liedjesuitnederland:
