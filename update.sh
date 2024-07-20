@@ -1,4 +1,6 @@
 #!/bin/bash
+set -e
+
 docker login --username harrydeboer
 sudo -u www-data git pull origin master
 docker compose pull
