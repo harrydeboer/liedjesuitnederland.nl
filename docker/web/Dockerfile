@@ -1,4 +1,4 @@
-FROM php:8.3-apache
+FROM php:8.4-apache
 
 ARG APP_ENV
 
@@ -19,8 +19,8 @@ ARG IMAGICK_VERSION=3.7.0
 
 # Imagick is installed from the archive because regular installation fails
 # See: https://github.com/Imagick/imagick/issues/643#issuecomment-1834361716
-RUN curl -L -o /tmp/imagick.tar.gz https://github.com/Imagick/imagick/archive/refs/tags/${IMAGICK_VERSION}.tar.gz \
-    && tar --strip-components=1 -xf /tmp/imagick.tar.gz \
+RUN curl -L -o /tmp/imagick.tar.tgz https://pecl.php.net/get/imagick-3.7.0.tgz \
+    && tar --strip-components=1 -zxf /tmp/imagick.tar.tgz \
     && phpize \
     && ./configure \
     && make \
