@@ -26,3 +26,4 @@
 /.env.local
 /compose.override.yml
 /wp-config.php
+/error_log
