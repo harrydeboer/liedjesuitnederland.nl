@@ -100,6 +100,11 @@ Videopagina
         });
     }
 });})(jQuery);
+jQuery(document).on('keypress', '#search-filter-form-182', function (event) {
+    if (event.which === 13) {
+        event.preventDefault();
+    }
+});
 function filterVideos() {
     jQuery.ajax({
         type: "GET",
