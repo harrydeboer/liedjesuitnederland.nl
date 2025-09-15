@@ -115,10 +115,12 @@ function filterVideos() {
             let arr = result.split('||BREAKPOINT||');
             let form = jQuery('#filters');
             let videosDiv = jQuery('#videos');
+            let search = jQuery('#_sf_search').val();
             form.replaceWith(arr[0]);
             videosDiv.replaceWith(arr[1]);
 
             let searchInput = jQuery('#_sf_search');
+            searchInput.val(search);
             let strLength = searchInput.val().length * 2;
             searchInput[0].setSelectionRange(strLength, strLength);
             searchInput.focus();
