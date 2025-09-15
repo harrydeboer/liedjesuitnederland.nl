@@ -120,11 +120,7 @@ function filterVideos() {
             videosDiv.replaceWith(arr[1]);
 
             let searchInput = jQuery('#_sf_search');
-            let searchOld = jQuery('#_sf_search').val();
             searchInput.val(search);
-            if (search !== searchOld) {
-                filterVideos();
-            }
             let strLength = searchInput.val().length * 2;
             searchInput[0].setSelectionRange(strLength, strLength);
             searchInput.focus();
