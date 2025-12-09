@@ -1,4 +1,4 @@
-FROM php:8.4-apache
+FROM php:8.5-apache
 
 ARG APP_ENV
 
@@ -41,7 +41,7 @@ RUN pecl install igbinary && docker-php-ext-enable igbinary
 
 RUN if [ "$APP_ENV" = "dev" ] ; then pecl install xdebug && docker-php-ext-enable xdebug; fi
 
-COPY --from=composer:2.8.3 /usr/bin/composer /usr/bin/composer
+COPY --from=composer:2.9.2 /usr/bin/composer /usr/bin/composer
 
 COPY ./docker /var/www/html/docker
 COPY ./docker/web/apache2.conf /etc/apache2/apache2.conf
