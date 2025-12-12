@@ -15,11 +15,9 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y install \
     libmagickwand-dev \
     wget
 
-ARG IMAGICK_VERSION=3.7.0
-
 # Imagick is installed from the archive because regular installation fails
 # See: https://github.com/Imagick/imagick/issues/643#issuecomment-1834361716
-RUN curl -L -o /tmp/imagick.tar.tgz https://pecl.php.net/get/imagick-3.7.0.tgz \
+RUN curl -L -o /tmp/imagick.tar.tgz https://pecl.php.net/get/imagick-3.8.1.tgz \
     && tar --strip-components=1 -zxf /tmp/imagick.tar.tgz \
     && phpize \
     && ./configure \
@@ -35,7 +33,7 @@ RUN sed -ri -e 's!/var/www/!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/apache2.conf
 
 RUN a2enmod headers rewrite ssl expires
 
-RUN docker-php-ext-install bcmath calendar curl ftp mbstring xml intl zip pdo_mysql opcache mysqli shmop exif gd
+RUN docker-php-ext-install bcmath calendar curl ftp mbstring xml intl zip pdo_mysql mysqli shmop exif gd
 
 RUN pecl install igbinary && docker-php-ext-enable igbinary
 
